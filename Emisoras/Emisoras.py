@@ -39,9 +39,10 @@ def colorear_grafo(grafo):
 
         # Eliminar los colores ya utilizados por los nodos vecinos
         for vecino in grafo.neighbors(nodo):
-            if vecino in color_map:
-                if color_map[vecino] in colores_disponibles:
-                    colores_disponibles.remove(color_map[vecino])
+            if grafo.get_edge_data(nodo, vecino)['weight']<150:
+                if vecino in color_map:
+                    if color_map[vecino] in colores_disponibles:
+                        colores_disponibles.remove(color_map[vecino])
 
         # Asignar el primer color disponible al nodo
         color_map[nodo] = colores_disponibles[0]
